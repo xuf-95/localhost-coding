@@ -1,13 +1,15 @@
 package com.funcation.udf;
 
-import org.apache.hadoop.hive.ql.exec.UDF;
+import com.aliyun.odps.udf.UDF;
 import org.apache.commons.codec.binary.Base64;
-
+import org.apache.hadoop.hive.ql.exec.UDF;
 
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+
 
 /**
  * @ClassName: AesEncrypt
