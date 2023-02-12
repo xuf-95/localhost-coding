@@ -1,6 +1,6 @@
 package com.funcation.udf;
 
-import com.aliyun.odps.udf.UDF;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
@@ -55,27 +55,27 @@ public class AesEncrypt extends UDF {
             e.printStackTrace();
             return null;
         }
+    }
 
-        public static String decryptAES(String data, String key) throws Exception {
-            try
-            {
-                //先用base64解密
-                byte[] encrypted1 = AesEncrypt.decode(data);
+    public static String decryptAES(String data, String key) throws Exception {
+        try
+        {
+            //先用base64解密
+            byte[] encrypted1 = AesEncrypt.decode(data);
 
-                Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
-                SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), "AES");
-                IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
+            Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
+            SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), "AES");
+            IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
 
-                cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
+            cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
 
-                byte[] original = cipher.doFinal(encrypted1);
-                String originalString = new String(original);
-                return originalString.trim();
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
+            byte[] original = cipher.doFinal(encrypted1);
+            String originalString = new String(original);
+            return originalString.trim();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

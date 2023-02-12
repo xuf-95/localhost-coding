@@ -18,4 +18,9 @@ public class ToJson extends UDF {
     public String evaluate (List<Map<String, String>> obj) {
         return new Gson().toJson(obj);
     }
+
+    public String evaluate (Map<String, String> obj) {
+        return new Gson().toJson(obj);
+    }
+
 }
